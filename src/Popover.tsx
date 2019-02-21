@@ -61,7 +61,7 @@ class Popover extends React.Component<PopoverProps, {}> {
                 this.popoverDiv.style.transition = `opacity ${transitionDuration || Constants.FADE_TRANSITION}s`;
                 window.document.body.appendChild(this.popoverDiv);
                 window.addEventListener('resize', this.onResize);
-                window.addEventListener('click', this.onClick);
+                window.addEventListener('mousedown', this.onClick);
             }
             this.renderPopover();
         } else if (this.popoverDiv && this.popoverDiv.parentNode) {
@@ -174,7 +174,7 @@ class Popover extends React.Component<PopoverProps, {}> {
                 if (this.willUnmount || !this.props.isOpen || !this.popoverDiv.parentNode) {
                     window.clearInterval(this.targetPositionIntervalHandler);
                     window.removeEventListener('resize', this.onResize);
-                    window.removeEventListener('click', this.onClick);
+                    window.removeEventListener('mousedown', this.onClick);
                     this.targetPositionIntervalHandler = null;
                     if (this.popoverDiv.parentNode) {
                         this.popoverDiv.parentNode.removeChild(this.popoverDiv);
